@@ -42,7 +42,8 @@ contract AccountDatabase {
         for (uint i = 0; i < _count; i++) {
             _items[i] = itemOwnershipDatabase[msg.sender].idItemOwned[i];
         }
-    }    
+    }      
+
 
     function removeOwnership(address item, address currentOwner) private {
         uint id = itemOwnershipDatabase[currentOwner].itemOwnedId[item];
@@ -52,7 +53,11 @@ contract AccountDatabase {
     }
 
     function addOwnership(address item, address newOwner) public {
-        //Assign the new item owner ship
+        //Assign the new item owner ship only if doesn't already exist
+        if (itemOwnershipDatabase[newOwner].itemOwnedId[item] > 0) {
+            //If already the owner of item, then don't proceed further
+            return;
+        }
         uint currentCount = itemOwnershipDatabase[newOwner].count;
 
         itemOwnershipDatabase[newOwner].idItemOwned[currentCount] = item;

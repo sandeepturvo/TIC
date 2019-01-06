@@ -4,6 +4,7 @@ import "./AccountDatabase.sol";
 
 contract Item {
     address public owner;
+    address public prevOwner;
     string public name;
 
     address public manufacturer;
@@ -20,7 +21,7 @@ contract Item {
     mapping(bytes32 => OwnerTraceNode) public idTraceNodeMap;
     uint public length = 0;
 
-    AccountDatabase internal accountDB = AccountDatabase(0x4FD47d35FE118c9844B4d8a2b2223E6313Ec5c9f);
+    AccountDatabase internal accountDB = AccountDatabase(0xb6A49DEfE6874ca8097883022CeC861d4FAf1988);
 
     function addOwnerTraceNode(address _ownerAddress, string memory _extraInfo) private {
         OwnerTraceNode memory ownerTraceNode = OwnerTraceNode(_ownerAddress, _extraInfo, headOwnerId);
@@ -51,11 +52,25 @@ contract Item {
     }
 
     function transferOwnership(address _newOwner, string memory _extraInfo) public onlyOwner {
+        prevOwner = owner;
         owner = _newOwner;
 
         //Add a new Line to extraInfo
         addOwnerTraceNode(_newOwner, strConcat(_extraInfo, "###"));
         accountDB.transferOwnership(address(this), msg.sender, _newOwner);
+    }
+
+    function rejectOwnership(string memory _extraInfo) public onlyOwner {
+
+        require(prevOwner != address(0x0), "Previous owner is not found, use transferOwnership method");
+
+        //Change the ownership in AccountDatabase
+        accountDB.transferOwnership(address(this), msg.sender, prevOwner);
+
+        owner = prevOwner;
+        prevOwner = msg.sender;
+
+        addOwnerTraceNode(owner, strConcat(_extraInfo, "###"));
     }
 
     function getOwnershipTrace() public view returns (string memory) {

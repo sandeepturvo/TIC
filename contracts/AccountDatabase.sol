@@ -63,7 +63,6 @@ contract AccountDatabase {
 
 
     function transferOwnership(address item, address currentOwner, address newOwner) public {
-        require(item.owner() == msg.sender, "Not the owner of this item, cannot transfer!!")
         removeOwnership(item, currentOwner);
 
         addOwnership(item, newOwner);

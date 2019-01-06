@@ -36,7 +36,7 @@ App = {
         $.getJSON("AccountDatabase.json", function (accountDatabase) {
             App.contracts.AccountDatabase = TruffleContract(accountDatabase);
             App.contracts.AccountDatabase.setProvider(App.web3Provider);
-            App.contracts.AccountDatabase.deployed().then(function (instance) {
+			App.contracts.AccountDatabase.at("0x4FD47d35FE118c9844B4d8a2b2223E6313Ec5c9f").then(function (instance) {
                 instance.findItems()
                     .then(function (items) {
                         var accountItems = items[1];

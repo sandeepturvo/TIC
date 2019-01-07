@@ -36,10 +36,11 @@ App = {
         $.getJSON("AccountDatabase.json", function (accountDatabase) {
             App.contracts.AccountDatabase = TruffleContract(accountDatabase);
             App.contracts.AccountDatabase.setProvider(App.web3Provider);
-			App.contracts.AccountDatabase.at("0x4FD47d35FE118c9844B4d8a2b2223E6313Ec5c9f").then(function (instance) {
+            App.contracts.AccountDatabase.at("0x3cae13001c74798BD7e99280e00b7fd5DdDA7C18").then(function (instance) {
                 instance.findItems()
                     .then(function (items) {
                         var accountItems = items[1];
+                        console.log(accountItems);
                         $.getJSON("Item.json", function (item) {
                             // Instantiate a new truffle contract from the artifact
                             App.contracts.Item = TruffleContract(item);
@@ -50,6 +51,7 @@ App = {
                                 var address = accountItems[i];
                                 App.contracts.Item.at(address).then(function (instance) {
                                     instance.name().then(function (name) {
+                                        console.log(name);
                                         showItem({
                                             name: name,
                                             address: instance.address

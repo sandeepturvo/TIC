@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Items Manager</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        .header-container {
+            min-height: 70px;
+            background-color: #212223;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .33)
+        }
+        
+        .logo-mark img {
+            height: 30px;
+        }
+        
+        .logo-brand img {
+            height: 30px;
+        }
+        
+        .logo-wrapper {
+            padding: 20px;
+        }
+        
+        .vertical-nav {
+            background-color: #313335;
+            color: #fff;
+        }
+        
+        .vertical-nav-first-item {
+            /*            padding-top: 70px;*/
+            font-size: 150%;
+            padding-top: 100px;
+            /*            padding-left: 10px;*/
+            text-align: center;
+        }
+        
+        .vertical-nav-next-item {
+            font-size: 150%;
+            padding-top: 80px;
+            /*            padding-left: 10px;*/
+            text-align: center;
+        }
+        
+        .nav-icon {
+            padding-right: 5px;
+            font-size: 170%;
+        }
+        
+        .nav-icon-check {
+            font-size: 175%;
+            padding-left: -3px;
+        }
+        
+        .main-content-container {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="header-container">
+
+        <div class="logo-wrapper">
+            <span class="logo-brand">
+            <img src="https://union-app.turvo.com/assets/img/turvo-logo-mark.svg">
+        </span>
+            <span class="logo-mark">
+            <img src= "https://union-app.turvo.com/assets/img/turvo-logo-brand.svg">
+        </span>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center h-100">
+            <div class=" hidden-md-down vertical-nav justify-content-center" id="yellow" style="width: 9.5%">
+
+                <div class="vertical-nav-first-item justify-content-center">
+                    <span class="fas fa-warehouse nav-icon"></span> Created Items
+                </div>
+
+                <div class="vertical-nav-next-item justify-content-center">
+                    <span class="fas fa-clipboard-check nav-icon nav-check-icon"></span> Owned Items
+                </div>
+
+
+            </div>
+            <div style="width: 90.5%">
+                <div class="container main-content-container">
+                    Content here
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

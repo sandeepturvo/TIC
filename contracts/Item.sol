@@ -8,6 +8,7 @@ contract Item {
     string public name;
 
     address public manufacturer;
+    uint public createdDate;
 
     // Represents the contract owner
     struct OwnerTraceNode {
@@ -45,7 +46,8 @@ contract Item {
         accountDB.addItem(address(this), msg.sender);
         accountDB.addOwnership(address(this), msg.sender);
 
-        addOwnerTraceNode(owner, "Default Owner###", now, 0);
+        createdDate = now;
+        addOwnerTraceNode(owner, "Default Owner###", createdDate, 0);
 
     }
 

@@ -14,6 +14,8 @@ contract Item {
         address owner;
         string extraInfo;
         bytes32 nextOwnerId;
+        uint ownedDate;
+        uint ownerTransferMode;
     }
 
     bytes32 public headOwnerId;
@@ -23,13 +25,14 @@ contract Item {
 
     AccountDatabase internal accountDB = AccountDatabase(0xb6A49DEfE6874ca8097883022CeC861d4FAf1988);
 
-    function addOwnerTraceNode(address _ownerAddress, string memory _extraInfo) private {
-        OwnerTraceNode memory ownerTraceNode = OwnerTraceNode(_ownerAddress, _extraInfo, headOwnerId);
+    function addOwnerTraceNode(address _ownerAddress, string memory _extraInfo, uint _ownedDate, uint _ownerTranferMode) private {
+        OwnerTraceNode memory ownerTraceNode = OwnerTraceNode(_ownerAddress, _extraInfo, headOwnerId, _ownedDate, _ownerTranferMode);
 
         bytes32 ownerId = keccak256(abi.encodePacked(_ownerAddress,now,length));
         idTraceNodeMap[ownerId] = ownerTraceNode;
         headOwnerId = ownerId;
         length = length + 1;
+
     }
 
 
@@ -42,7 +45,7 @@ contract Item {
         accountDB.addItem(address(this), msg.sender);
         accountDB.addOwnership(address(this), msg.sender);
 
-        addOwnerTraceNode(owner, "Initial owner  ###");
+        addOwnerTraceNode(owner, "Default Owner###", now, 0);
 
     }
 
@@ -56,7 +59,7 @@ contract Item {
         owner = _newOwner;
 
         //Add a new Line to extraInfo
-        addOwnerTraceNode(_newOwner, strConcat(_extraInfo, "###"));
+        addOwnerTraceNode(_newOwner, strConcat(_extraInfo, "###"), now, 0/*Normal Transfer*/);
         accountDB.transferOwnership(address(this), msg.sender, _newOwner);
     }
 
@@ -70,25 +73,34 @@ contract Item {
         owner = prevOwner;
         prevOwner = msg.sender;
 
-        addOwnerTraceNode(owner, strConcat(_extraInfo, "###"));
+        addOwnerTraceNode(owner, strConcat(_extraInfo, "###"), now, 1/*Rejection*/);
     }
 
-    function getOwnershipTrace() public view returns (string memory) {
-        string memory ownershipTrace = "";
+    function getOwnershipTrace() public view returns (uint  _count, address[] memory _owners, uint[] memory _ownershipTransferDates, 
+        uint[] memory _ownershipTransferModes, string memory _ownershipTrace) {
+
+        _count = length;
+        _owners = new address[](_count);
+        _ownershipTransferDates = new uint[](_count);
+        _ownershipTransferModes = new uint[](_count);
 
         bytes32 current = headOwnerId;
 
+        uint _i = 0;
         while( current != 0 ){
             string memory extraInfo = idTraceNodeMap[current].extraInfo;
 
+            //Set owner array elements
+            _owners[_i] = idTraceNodeMap[current].owner;
+            _ownershipTransferDates[_i] = idTraceNodeMap[current].ownedDate;
+            _ownershipTransferModes[_i] = idTraceNodeMap[current].ownerTransferMode;
+
+            _ownershipTrace = strConcat(_ownershipTrace, extraInfo);
+
             current = idTraceNodeMap[current].nextOwnerId;
-
-
-            ownershipTrace = strConcat(ownershipTrace, extraInfo);
-
+            _i++;
         }
 
-        return ownershipTrace;
     }
 
 

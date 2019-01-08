@@ -1,4 +1,6 @@
 $(function () {
+    var ownersMap;
+
     var $itemTimeline = $("#item-timeline");
 
     var loading;
@@ -37,7 +39,7 @@ $(function () {
                                         <table>
                                             <tr>
                                                 <td>Manufacturer</td>
-                                                <td>${item.manufacturer}</td>
+                                                <td>${ownersMap[item.manufacturer.toLowerCase()] + "(" + item.manufacturer + ")"}</td>
                                             </tr>
 
                                         </table>
@@ -63,7 +65,7 @@ $(function () {
                                                 <h3>${date}</h3>
                                             </div>
                                             <div class="body">
-                                                <p>${trace.owner}</p>
+                                                <p>${ownersMap[trace.owner] + "(" + trace.owner + ")"}</p>
                                                 <p>${trace.comment}</p>
 
                                             </div>
@@ -95,13 +97,16 @@ $(function () {
         },
 
         initContract: function () {
-            $.getJSON("Item.json", function (item) {
-                // Instantiate a new truffle contract from the artifact
-                App.contracts.Item = TruffleContract(item);
-                // Connect provider to interact with contract
-                App.contracts.Item.setProvider(App.web3Provider);
+            $.getJSON("static/owners.json", function (map) {
+                ownersMap = map;
+                $.getJSON("Item.json", function (item) {
+                    // Instantiate a new truffle contract from the artifact
+                    App.contracts.Item = TruffleContract(item);
+                    // Connect provider to interact with contract
+                    App.contracts.Item.setProvider(App.web3Provider);
 
-                return App.render();
+                    return App.render();
+                });
             });
         },
 

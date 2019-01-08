@@ -1,4 +1,6 @@
 $(function () {
+    var ownersMap;
+
     const $itemTimeline = $("#item-timeline");
 
     var loadedItem;
@@ -32,7 +34,7 @@ $(function () {
 
                                          <div class="row" style="padding-top:5px;margin-bottom:0px">
                                             <div class = "col-sm-5">Manufacturer</div>
-                                            <div class = "col-sm-7">${item.manufacturer}</div>
+                                            <div class = "col-sm-7">${ownersMap[item.manufacturer.toLowerCase()] + "(" + item.manufacturer + ")"}</div>
                                         </div>
                                     </li>
 
@@ -57,7 +59,7 @@ $(function () {
                                                 <h3>${date}</h3>
                                             </div>
                                             <div class="body">
-                                                <p>${trace.owner}</p>
+                                                <p>${ownersMap[trace.owner.toLowerCase()] + "(" + trace.owner + ")"}</p>
                                                 <p>${trace.comment}</p>
 
                                             </div>
@@ -79,12 +81,15 @@ $(function () {
         },
 
         initContract: function () {
-            $.getJSON("Item.json", function (item) {
-                // Instantiate a new truffle contract from the artifact
-                App.contracts.Item = TruffleContract(item);
-                // Connect provider to interact with contract
-                App.contracts.Item.setProvider(App.web3Provider);
-                return App.render();
+            $.getJSON("static/owners.json", function (map) {
+                ownersMap = map;
+                $.getJSON("Item.json", function (item) {
+                    // Instantiate a new truffle contract from the artifact
+                    App.contracts.Item = TruffleContract(item);
+                    // Connect provider to interact with contract
+                    App.contracts.Item.setProvider(App.web3Provider);
+                    return App.render();
+                });
             });
         },
 

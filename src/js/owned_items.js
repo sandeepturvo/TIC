@@ -9,7 +9,7 @@ function showItem(item) {
     const text = item.address;
     const date =  moment.unix(parseInt(item.date.toString())).format('YYYY-MM-DD HH:mm:ss');// Date.parse(itemDate).toString('yyyy-MM-dd H:i:s')
 
-    var $itemSnip = $(`<div class="col-sm-2 item-card">
+    var $itemSnip = $(`<div class="col-sm-4 item-card">
                             <div class="card">
                                 <div class="card-img-qr" id="qr-code-${item.address}"></div>
                                 <div class="card-body">
@@ -28,8 +28,6 @@ function showItem(item) {
 
     new QRCode(document.getElementById(qrCodeId), {
         text,
-        width: 220,
-        height: 220,
         colorDark: "#000000",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
@@ -70,6 +68,15 @@ App = {
                 instance.findOwnedItems()
                     .then(function (items) {
                         var accountItems = items[1];
+
+                        var newItems = [];
+                        for (var i = 0; i < accountItems.length; i++) {
+                            if (accountItems[i] !== '0x0000000000000000000000000000000000000000') {
+                                newItems.push(accountItems[i]);
+                            }
+                        }
+                        accountItems = newItems;
+
                         console.log(accountItems);
                         $itemList.empty();
                         $.getJSON("Item.json", function (item) {
@@ -79,6 +86,9 @@ App = {
                             App.contracts.Item.setProvider(App.web3Provider);
 
                             var countItemsDisplayed = 0;
+                            if (accountItems.length === 0) {
+                                loading.out();
+                            }
                             for (var i = 0; i < accountItems.length; i++) {
                                 var address = accountItems[i];
                                 var index = i;

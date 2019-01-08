@@ -77,6 +77,9 @@ App = {
                             App.contracts.Item.setProvider(App.web3Provider);
 
                             var countItemsDisplayed = 0;
+                            if (accountItems.length === 0) {
+                                loading.out();
+                            }
                             for (var i = 0; i < accountItems.length; i++) {
                                 var address = accountItems[i];
                                 var index = i;

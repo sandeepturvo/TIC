@@ -1,6 +1,8 @@
 $(function () {
     const $itemTimeline = $("#item-timeline");
 
+    var loadedItem;
+
     function createItemCard(item) {
         var $itemRes = $("#item-res");
         $itemRes.empty();
@@ -104,6 +106,7 @@ $(function () {
 
             const searchParams = new URLSearchParams(window.location.search);
             App.contracts.Item.at(searchParams.get("address")).then(function (instance) {
+                loadedItem = instance;
 
                 var namePromise = instance.name();
                 var datePromise = namePromise.then(function (name) {
@@ -134,6 +137,18 @@ $(function () {
             });
         }
     };
+
+    $("#transferOwnershipButton").on("click", function () {
+        loadedItem.transferOwnership($("#newAddress").val(), "").then(function () {
+            window.location.href = '/item_detail.html?address=' + loadedItem.address;
+        });
+    });
+
+    $("#rejectOwnershipButton").on('click', function () {
+        loadedItem.rejectOwnership("").then(function () {
+            window.location.href = '/item_detail.html?address=' + loadedItem.address;
+        });
+    });
 
     $(window).load(function () {
         App.init();

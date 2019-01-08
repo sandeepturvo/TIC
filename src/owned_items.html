@@ -114,6 +114,11 @@
             text-decoration: none;
             color: #fff;
         }
+
+        .card-img-qr img {
+            max-width: 60%;
+            width: 60%;
+        }
     </style>
     <script>
     </script>
@@ -139,7 +144,6 @@
 <div class=" h-100">
     <div class="row justify-content-center h-100">
         <div class=" hidden-md-down vertical-nav justify-content-center" id="yellow" style="width: 9.5%">
-
             <div class="vertical-nav-first-item justify-content-center">
                 <a class="nav-link active" href="/index.html">
                     <span class="fas fa-warehouse nav-icon"></span> Created Items
@@ -151,7 +155,6 @@
                     <span class="fas fa-clipboard-check nav-icon nav-check-icon"></span> Owned Items
                 </a>
             </div>
-
         </div>
         <div style="width: 90.5%">
             <div class="main-content-container">
@@ -171,6 +174,7 @@
     <ul>
         <li><a class="btn-floating btn-large blue" href="/scanned_item.html"><i class="material-icons">filter_center_focus</i></a></li>
         <li><a class="btn-floating btn-large blue" href="/new_item.html"><i class="material-icons">add</i></a></li>
+
     </ul>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -187,8 +191,7 @@
 <script src="js/truffle-contract.js"></script>
 <script type="text/javascript" src="js/moment-min.js"></script>
 <script type="text/javascript" src="js/library/modal-loading.js"></script>
-<script src="js/index.js"></script>
-<script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+<script src="js/owned_items.js"></script>
 
 </body>
 

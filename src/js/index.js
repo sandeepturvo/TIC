@@ -9,7 +9,7 @@ function showItem(item) {
     const text = item.address;
     const date =  moment.unix(parseInt(item.date.toString())).format('YYYY-MM-DD HH:mm:ss');
 
-    var $itemSnip = $(`<div class="col-sm-2 item-card">
+    var $itemSnip = $(`<div class="col-sm-4 item-card">
                             <div class="card">
                                 <div class="card-img-qr" id="qr-code-${item.address}"></div>
                                 <div class="card-body">
@@ -28,8 +28,6 @@ function showItem(item) {
 
     new QRCode(document.getElementById(qrCodeId), {
         text,
-        width: 220,
-        height: 220,
         colorDark: "#000000",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H

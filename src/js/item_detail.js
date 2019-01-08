@@ -6,40 +6,34 @@ $(function () {
         $itemRes.empty();
         const date = moment.unix(parseInt(item.date.toString())).format('YYYY-MM-DD HH:mm:ss');// Date.parse(itemDate).toString('yyyy-MM-dd H:i:s')
 
-        const itemHtml = `<div class="card-body">
+        const itemHtml = `<div class="card"><div class="card-body">
+                                    <div class="card-img-qr" id="qr-code"></div>
                                     <h5 class="card-title">${item.name}</h5>
+                                   
 
-                                </div>
+                                
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <table>
-                                            <tr>
-                                                <td>Address</td>
-                                                <td>${item.address}</td>
-                                            </tr>
-
-                                        </table>
+                                        <div class="row" style="padding-top:5px;margin-bottom:0px">
+                                            <div class = "col-sm-5">Address</div>
+                                            <div class = "col-sm-7">${item.address}</div>
+                                        </div>
                                     </li>
                                     <li class="list-group-item">
-                                        <table>
-                                            <tr>
-                                                <td>Date</td>
-                                                <td>${date}</td>
-                                            </tr>
-
-                                        </table>
+                                        <div class="row" style="padding-top:5px;margin-bottom:0px">
+                                            <div class = "col-sm-5">Date</div>
+                                            <div class = "col-sm-7">${date}</div>
+                                        </div>
                                     </li>
                                      <li class="list-group-item">
-                                        <table>
-                                            <tr>
-                                                <td>Manufacturer</td>
-                                                <td>${item.manufacturer}</td>
-                                            </tr>
 
-                                        </table>
+                                         <div class="row" style="padding-top:5px;margin-bottom:0px">
+                                            <div class = "col-sm-5">Manufacturer</div>
+                                            <div class = "col-sm-7">${item.manufacturer}</div>
+                                        </div>
                                     </li>
 
-                                </ul>`;
+                                </ul></div></div></div>`;
 
         $itemRes.append(itemHtml);
 
@@ -61,6 +55,7 @@ $(function () {
                                             </div>
                                             <div class="body">
                                                 <p>${trace.owner}</p>
+                                                <p>${trace.comment}</p>
 
                                             </div>
                                         </div>`;

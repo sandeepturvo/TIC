@@ -54,6 +54,7 @@
         .vertical-nav {
             background-color: #313335;
             color: #fff;
+            height: 300%;
         }
         
         .vertical-nav-first-item {
@@ -114,8 +115,8 @@
         }
         
         .item-res-card {
-            margin-left: 50px;
-        }
+/*            margin-left: 50px;
+*/        }
         
         .list-group-item tr {
             border-bottom: 0px;
@@ -220,6 +221,10 @@
             padding-right: 20px;
         }
 
+        .reject-ownership{
+            margin-top: 40px;
+        }
+
         a.nav-link {
             text-decoration: none;
             color: #fff;
@@ -275,26 +280,39 @@
                         <div class="col-sm-5 item-res-card">
                             <div id="item-res"></div>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-6">
+
+                            <div class="row">
+                                    <div class="col-sm-4">
                             <div>
                                 <div class="card-img-qr" id="qr-code"></div>
                             </div>
+                            </div>
+                            <div class="col-sm-7">
                             <div class="card-body">
+
+
                                 <div class="input-field s5">
-                                    <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-                                    <label for="first_name">First Name</label>
+                                    <input placeholder="Owner Address" id="first_name" type="text" class="validate"> 
+                                    
                                 </div>
                                 <div>
                                     <a href="#" class="btn btn-primary blue">Transfer OwnerShip</a>
                                 </div>
-                                <div>
+                                <div style="margin-top: 40px"> <span><span style="visibility: none">-----------</span></span>OR<span><span style="visibility: none">-----------</span></span></div>
+                                <div class="reject-ownership">
                                     <a href="#" class="btn btn-primary red">Reject OwnerShip</a>
                                 </div>
                             </div>
+                        </div>
+
 
                         </div>
                     </div>
-                    <div class="row">
+                    
+                </div>
+
+            <div class="row">
                         <div class="col-md-12">
                             <div class="card " style="width: 50rem;">
                                 <div class="card-header">
@@ -306,9 +324,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-
             </div>
         </div>
         <div class="fixed-action-btn">

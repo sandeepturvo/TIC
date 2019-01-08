@@ -64,6 +64,7 @@ $(function () {
                                             </div>
                                             <div class="body">
                                                 <p>${trace.owner}</p>
+                                                <p>${trace.comment}</p>
 
                                             </div>
                                         </div>`;

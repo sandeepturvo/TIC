@@ -14,26 +14,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/app.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <style>
         html,
         body {
@@ -268,7 +252,7 @@
                             <div class="card" style="max-width: 98%">
                                 <div class="card-body">
 
-                                    <h6 class="card-title">Created Items  <span class="breadcrumb-nav"><i class="fas fa-greater-than"></i></span> 0x898980asdasdasdasdasdasdahh888</h6>
+                                    <h6 class="card-title">Created Items  <span class="breadcrumb-nav"><i class="fas fa-greater-than"></i></span> <span id="itemAddress"></span></h6>
 
 
                                 </div>
@@ -277,36 +261,12 @@
                     </div>
                     <div class="row">
 
+
                         <div class="col-sm-5 item-res-card">
-
-                            <div class="card " style="width: 50rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Iphone</h5>
-
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <table>
-                                            <tr>
-                                                <td>Address</td>
-                                                <td>0x898980asdasdasdasdasdasdahh888</td>
-                                            </tr>
-
-                                        </table>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <table>
-                                            <tr>
-                                                <td>Owner</td>
-                                                <td>Apple Manufacturer</td>
-                                            </tr>
-
-                                        </table>
-                                    </li>
-
-                                </ul>
+                            <div id="item-res">
 
                             </div>
+
                             <div class="card " style="width: 50rem;">
                                 <div class="card-header">
                                     <h5 class="card-title">Timeline</h5>
@@ -315,54 +275,8 @@
 
                                 <div class="card-body">
 
-                                    <div class="timeline">
-                                        <div class="entry">
-                                            <div class="title">
-                                                <h3>2014 - Present</h3>
-                                            </div>
-                                            <div class="body">
-                                                <p>Apple Manufacturer</p>
+                                    <div class="timeline" id="item-timeline"></div>
 
-                                            </div>
-                                        </div>
-                                        <div class="entry">
-                                            <div class="title">
-                                                <h3>2014 - Present</h3>
-                                            </div>
-                                            <div class="body">
-                                                <p>Oneplus Manufacturer</p>
-
-                                            </div>
-                                        </div>
-                                        <div class="entry">
-                                            <div class="title">
-                                                <h3>2014 - Present</h3>
-                                            </div>
-                                            <div class="body">
-                                                <p>Oneplus Manufacturer</p>
-
-                                            </div>
-                                        </div>
-                                        <div class="entry">
-                                            <div class="title">
-                                                <h3>2014 - Present</h3>
-                                            </div>
-                                            <div class="body">
-                                                <p>Oneplus Manufacturer</p>
-
-                                            </div>
-                                        </div>
-                                        <div class="entry">
-                                            <div class="title">
-                                                <h3>2014 - Present</h3>
-                                            </div>
-                                            <div class="body">
-                                                <p>Oneplus Manufacturer</p>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -397,7 +311,33 @@
 
             </ul>
         </div>
+    </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="js/truffle-contract.js"></script>
+    <script type="text/javascript" src="js/moment-min.js"></script>
+    <script src="js/item_detail.js"></script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 </body>
 
 </html>

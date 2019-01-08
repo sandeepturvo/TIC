@@ -11,7 +11,7 @@ function showItem(item) {
     //var itemDate = new Date(parseInt(item.date.toString())*1000);
     const date =  moment.unix(parseInt(item.date.toString())).format('YYYY-MM-DD HH:mm:ss');// Date.parse(itemDate).toString('yyyy-MM-dd H:i:s')
 
-   var itemSnip = `<div class="col-sm-2 item-card">
+   var $itemSnip = $(`<div class="col-sm-2 item-card">
                             <div class="card">
                                 <div class="card-img-qr" id="qr-code-${item.address}"></div>
                                 <div class="card-body">
@@ -21,22 +21,13 @@ function showItem(item) {
                                     
                                 </div>
                             </div>
-                        </div>`;
-    console.log(itemSnip);
-    $itemList.append(itemSnip);
-    console.log(qrCodeId);
+                        </div>`);
+    $itemList.append($itemSnip);
+    $itemSnip.on('click', function () {
+        window.location.href = '/item_detail.html?address=' + item.address;
+    });
+    $itemSnip.css('cursor', 'pointer');
 
-    // $itemList.append(itemSnip,function(index,html){
-    //     console.log(id);
-    //     new QRCode(document.getElementById(id), {
-    //                       text,
-    //                       width: 220,
-    //                       height: 220,
-    //                       colorDark: "#000000",
-    //                       colorLight: "#ffffff",
-    //                       correctLevel: QRCode.CorrectLevel.H
-    //                   });
-    // })
      new QRCode(document.getElementById(qrCodeId), {
                           text,
                           width: 220,
@@ -112,7 +103,6 @@ App = {
     web3Provider: null,
     contracts: {},
     account: '0x0',
-    hasVoted: false,
 
     init: function () {
         return App.initWeb3();

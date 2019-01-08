@@ -289,17 +289,22 @@
                             </div>
                             </div>
                             <div class="col-sm-7">
-                            <div class="card-body">
+                            <div class="card-body" id="transferBlock" style="display: none">
 
 
                                 <div class="input-field s5">
                                     <input placeholder="Owner Address" id="newAddress" type="text" class="validate">
-                                    
+                                </div>
+                                <div class="input-field s5">
+                                    <input placeholder="Comment" id="transferComment" type="text" class="validate">
                                 </div>
                                 <div>
                                     <button id="transferOwnershipButton" class="btn btn-primary blue">Transfer OwnerShip</button>
                                 </div>
                                 <div style="margin-top: 40px"> <span><span style="visibility: none">-----------</span></span>OR<span><span style="visibility: none">-----------</span></span></div>
+                                <div class="input-field s5">
+                                    <input placeholder="Comment" id="rejectComment" type="text" class="validate">
+                                </div>
                                 <div class="reject-ownership">
                                     <button id="rejectOwnershipButton" class="btn btn-primary red">Reject OwnerShip</button>
                                 </div>

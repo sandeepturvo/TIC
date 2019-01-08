@@ -2,6 +2,7 @@ $(function () {
     const $itemTimeline = $("#item-timeline");
 
     var loadedItem;
+    var itemOwner;
 
     function createItemCard(item) {
         var $itemRes = $("#item-res");
@@ -98,7 +99,11 @@ $(function () {
             web3.eth.getCoinbase(function (err, account) {
                 if (err === null) {
                     App.account = account;
-                    $("#accountAddress").html("Your Account: " + account);
+                    if (itemOwner !== undefined) {
+                        if (account === itemOwner) {
+                            $("#transferBlock").css("display", "");
+                        }
+                    }
                 }
             });
 
@@ -131,6 +136,12 @@ $(function () {
                     for (var i = 0; i < count; i++) {
                         createTimeLine({owner: owners[i], date: dates[i], mode: modes[i], comment: comments[i]})
                     }
+                    itemOwner = owners[0];
+                    if (App.account !== undefined) {
+                        if (App.account === itemOwner) {
+                            $("#transferBlock").css("display", "");
+                        }
+                    }
                     $('#main-content-container').css('opacity', '100');
                     loading.out();
                 });
@@ -139,13 +150,13 @@ $(function () {
     };
 
     $("#transferOwnershipButton").on("click", function () {
-        loadedItem.transferOwnership($("#newAddress").val(), "").then(function () {
+        loadedItem.transferOwnership($("#newAddress").val(), $("#transferComment").val()).then(function () {
             window.location.href = '/item_detail.html?address=' + loadedItem.address;
         });
     });
 
     $("#rejectOwnershipButton").on('click', function () {
-        loadedItem.rejectOwnership("").then(function () {
+        loadedItem.rejectOwnership($("#rejectComment").val()).then(function () {
             window.location.href = '/item_detail.html?address=' + loadedItem.address;
         });
     });

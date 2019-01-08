@@ -216,6 +216,11 @@
             padding-left: 20px;
             padding-right: 20px;
         }
+
+        a.nav-link {
+            text-decoration: none;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -239,16 +244,17 @@
     <div class=" h-100">
         <div class="row justify-content-center h-100">
             <div class=" hidden-md-down vertical-nav justify-content-center" id="yellow" style="width: 9.5%">
-
                 <div class="vertical-nav-first-item justify-content-center">
-                    <div> <span class="fas fa-warehouse nav-icon"></span> Created Items</div>
+                    <a class="nav-link active" href="/index.html">
+                        <span class="fas fa-warehouse nav-icon"></span> Created Items
+                    </a>
                 </div>
 
                 <div class="vertical-nav-next-item justify-content-center">
-                    <span class="fas fa-clipboard-check nav-icon nav-check-icon"></span> Owned Items
+                    <a class="nav-link" href="/owned_items.html">
+                        <span class="fas fa-clipboard-check nav-icon nav-check-icon"></span> Owned Items
+                    </a>
                 </div>
-
-
             </div>
             <div style="width: 90.5%">
                 <div class="main-content-container">
@@ -270,10 +276,10 @@
 
                             <div class="card-body">
                                 <div class="input-field s5">
-                                    <form onSubmit="App.saveItem(); return false;">
+                                    <div>
                                         <input placeholder="Item name" id="itemName" type="text" class="validate">
-                                        <button type="submit" class="btn btn-primary blue" style="margin-top:8px;">Create</button>
-                                    </form>
+                                        <button id="createButton" type="submit" class="btn btn-primary blue" style="margin-top:8px;">Create</button>
+                                    </div>
                                 </div>
                                 <div>
 
@@ -292,9 +298,8 @@
                 <i class="large material-icons">settings</i>
             </a>
             <ul>
-                <li><a class="btn-floating btn-large blue"><i class="material-icons">filter_center_focus</i></a></li>
-                <li><a class="btn-floating btn-large blue"><i class="material-icons">add</i></a></li>
-
+                <li><a class="btn-floating btn-large blue" href="/scanned_item.html"><i class="material-icons">filter_center_focus</i></a></li>
+                <li><a class="btn-floating btn-large blue" href="/new_item.html"><i class="material-icons">add</i></a></li>
             </ul>
         </div>
     </div>
@@ -311,7 +316,7 @@
     <script src="js/qrcode.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/new_item.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

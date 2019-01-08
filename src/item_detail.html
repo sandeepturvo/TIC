@@ -18,13 +18,21 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="css/library/modal-loading.css">
+    <link rel="stylesheet" href="css/library/modal-loading-animate.css">
     <style>
         html,
         body {
             height: 100%;
             font-family: 'Roboto', sans-serif;
         }
-        
+
+        #qr-code img {
+            max-width: 40%;
+            width: 40%;
+        }
+
         .header-container {
             min-height: 70px;
             background-color: #212223;
@@ -211,6 +219,11 @@
             padding-left: 20px;
             padding-right: 20px;
         }
+
+        a.nav-link {
+            text-decoration: none;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -234,55 +247,37 @@
     <div class=" h-100">
         <div class="row justify-content-center h-100">
             <div class=" hidden-md-down vertical-nav justify-content-center" id="yellow" style="width: 9.5%">
-
                 <div class="vertical-nav-first-item justify-content-center">
-                    <div> <span class="fas fa-warehouse nav-icon"></span> Created Items</div>
+                    <a class="nav-link active" href="/index.html">
+                        <span class="fas fa-warehouse nav-icon"></span> Created Items
+                    </a>
                 </div>
 
                 <div class="vertical-nav-next-item justify-content-center">
-                    <span class="fas fa-clipboard-check nav-icon nav-check-icon"></span> Owned Items
+                    <a class="nav-link" href="/owned_items.html">
+                        <span class="fas fa-clipboard-check nav-icon nav-check-icon"></span> Owned Items
+                    </a>
                 </div>
-
-
             </div>
             <div style="width: 90.5%">
-                <div class="main-content-container">
+                <div class="main-content-container" id="main-content-container" style="opacity: 0">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card" style="max-width: 98%">
                                 <div class="card-body">
-
-                                    <h6 class="card-title">Created Items  <span class="breadcrumb-nav"><i class="fas fa-greater-than"></i></span> <span id="itemAddress"></span></h6>
-
+                                    <h6 class="card-title">Item</h6>
 
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-
-
                         <div class="col-sm-5 item-res-card">
-                            <div id="item-res">
-
-                            </div>
-
-                            <div class="card " style="width: 50rem;">
-                                <div class="card-header">
-                                    <h5 class="card-title">Timeline</h5>
-
-                                </div>
-
-                                <div class="card-body">
-
-                                    <div class="timeline" id="item-timeline"></div>
-
-                                </div>
-                            </div>
+                            <div id="item-res"></div>
                         </div>
                         <div class="col-sm-5">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/220px-QR_code_for_mobile_English_Wikipedia.svg.png" alt="Card image cap">
+                            <div>
+                                <div class="card-img-qr" id="qr-code"></div>
                             </div>
                             <div class="card-body">
                                 <div class="input-field s5">
@@ -292,8 +287,23 @@
                                 <div>
                                     <a href="#" class="btn btn-primary blue">Transfer OwnerShip</a>
                                 </div>
+                                <div>
+                                    <a href="#" class="btn btn-primary red">Reject OwnerShip</a>
+                                </div>
                             </div>
 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card " style="width: 50rem;">
+                                <div class="card-header">
+                                    <h5 class="card-title">Timeline</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="timeline" id="item-timeline"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -306,8 +316,8 @@
                 <i class="large material-icons">settings</i>
             </a>
             <ul>
-                <li><a class="btn-floating btn-large blue"><i class="material-icons">filter_center_focus</i></a></li>
-                <li><a class="btn-floating btn-large blue"><i class="material-icons">add</i></a></li>
+                <li><a class="btn-floating btn-large blue" href="/scanned_item.html"><i class="material-icons">filter_center_focus</i></a></li>
+                <li><a class="btn-floating btn-large blue" href="/new_item.html"><i class="material-icons">add</i></a></li>
 
             </ul>
         </div>
@@ -330,6 +340,8 @@
 
     <script src="js/truffle-contract.js"></script>
     <script type="text/javascript" src="js/moment-min.js"></script>
+    <script type="text/javascript" src="js/library/modal-loading.js"></script>
+    <script src="js/qrcode.js"></script>
     <script src="js/item_detail.js"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

@@ -24,11 +24,8 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/qrcode.js"></script>
-    <script src="js/app.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <link rel="stylesheet" href="css/library/modal-loading.css">
+    <link rel="stylesheet" href="css/library/modal-loading-animate.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -231,6 +228,24 @@
             content: "–";
             margin-right: 0.5em;
         }
+
+        #qr-code {
+            display: inline-block;
+        }
+
+        #qr-code img {
+            max-width: 40%;
+        }
+
+        #card-title {
+            display: inline-block;
+            margin-left: -20%;
+        }
+
+        a.nav-link {
+            text-decoration: none;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -254,16 +269,17 @@
     <div class=" h-100">
         <div class="row justify-content-center h-100">
             <div class=" hidden-md-down vertical-nav justify-content-center" id="yellow" style="width: 9.5%">
-
                 <div class="vertical-nav-first-item justify-content-center">
-                    <div> <span class="fas fa-warehouse nav-icon"></span> Created Items</div>
+                    <a class="nav-link active" href="/index.html">
+                        <span class="fas fa-warehouse nav-icon"></span> Created Items
+                    </a>
                 </div>
 
                 <div class="vertical-nav-next-item justify-content-center">
-                    <span class="fas fa-clipboard-check nav-icon nav-check-icon"></span> Owned Items
+                    <a class="nav-link" href="/owned_items.html">
+                        <span class="fas fa-clipboard-check nav-icon nav-check-icon"></span> Owned Items
+                    </a>
                 </div>
-
-
             </div>
             <div style="width: 90.5%">
                 <div class="main-content-container">
@@ -280,7 +296,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-8 item-res-card">
+                        <div class="col-sm-8 item-res-card" style="opacity: 0" id="item-details">
                             <div class="card " style="width: 50rem;" id="item-res">
                                
 
@@ -313,9 +329,8 @@
             <i class="large material-icons">settings</i>
         </a>
         <ul>
-            <li><a class="btn-floating btn-large blue"><i class="material-icons">filter_center_focus</i></a></li>
-            <li><a class="btn-floating btn-large blue"><i class="material-icons">add</i></a></li>
-
+            <li><a class="btn-floating btn-large blue" href="/scanned_item.html"><i class="material-icons">filter_center_focus</i></a></li>
+            <li><a class="btn-floating btn-large blue" href="/new_item.html"><i class="material-icons">add</i></a></li>
         </ul>
     </div>
     
@@ -332,8 +347,9 @@
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
     <script type="text/javascript" src="js/moment-min.js"></script>
-    <script src="js/app.js"></script>
+    <script type="text/javascript" src="js/library/modal-loading.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="js/scanned_item.js"></script>
 
 </body>
 

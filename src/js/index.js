@@ -1,7 +1,10 @@
+const ACCOUNT_DATABASE_ADDR = "0x74444C982F8e90b6036b3043EA6fA206D2c7D0f6";
+const ETHEREUM_NETWORK_URL = "http://35.232.246.167:7545";
+
 var id = 1;
 var items = [];
 
-var $itemList = $("#item-list");
+var $itemList = $("#item-list"); 
 
 function showItem(item) {
 
@@ -54,7 +57,7 @@ App = {
             web3 = new Web3(web3.currentProvider);
         } else {
             // Specify default instance if no web3 instance provided
-            App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+            App.web3Provider = new Web3.providers.HttpProvider(ETHEREUM_NETWORK_URL);
             web3 = new Web3(App.web3Provider);
         }
         return App.initContract();
@@ -64,7 +67,7 @@ App = {
         $.getJSON("AccountDatabase.json", function (accountDatabase) {
             App.contracts.AccountDatabase = TruffleContract(accountDatabase);
             App.contracts.AccountDatabase.setProvider(App.web3Provider);
-            App.contracts.AccountDatabase.at("0x3cae13001c74798BD7e99280e00b7fd5DdDA7C18").then(function (instance) {
+            App.contracts.AccountDatabase.at(ACCOUNT_DATABASE_ADDR).then(function (instance) {
                 instance.findItems()
                     .then(function (items) {
                         var accountItems = items[1];

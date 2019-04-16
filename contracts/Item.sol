@@ -24,7 +24,7 @@ contract Item {
     mapping(bytes32 => OwnerTraceNode) public idTraceNodeMap;
     uint public length = 0;
 
-    AccountDatabase internal accountDB = AccountDatabase(0xb6A49DEfE6874ca8097883022CeC861d4FAf1988);
+    AccountDatabase internal accountDB = AccountDatabase(0x74444C982F8e90b6036b3043EA6fA206D2c7D0f6);
 
     function addOwnerTraceNode(address _ownerAddress, string memory _extraInfo, uint _ownedDate, uint _ownerTranferMode) private {
         OwnerTraceNode memory ownerTraceNode = OwnerTraceNode(_ownerAddress, _extraInfo, headOwnerId, _ownedDate, _ownerTranferMode);

@@ -1,5 +1,5 @@
-var AccountDatabase = artifacts.require("./AccountDatabase.sol");
+var Item = artifacts.require("./Item.sol");
 
 module.exports = function (deployer) {
-    deployer.deploy(AccountDatabase);
+    deployer.deploy(Item, "test1");
 };
